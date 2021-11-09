@@ -1,0 +1,38 @@
+
+### Change directory
+root@ubuntu:~# cd
+
+### create a hello directory
+
+root@ubuntu:~# mkdir hello
+root@ubuntu:~# ls
+hello
+root@ubuntu:~# cd hello/
+
+### module init 
+root@ubuntu:~/hello# go mod init example/hello
+go: creating new go.mod: module example/hello
+root@ubuntu:~/hello# ls
+go.mod
+root@ubuntu:~/hello# cat go.mod
+module example/hello
+
+go 1.17
+
+
+##################################
+root@ubuntu:~/hello# vi hello.go
+root@ubuntu:~/hello# cat hello.go
+	package main
+
+	import "fmt"
+
+	func main() {
+		fmt.Println("Hello, World!")
+	}
+
+##################################
+root@ubuntu:~/hello# go run .
+Hello, World!
+root@ubuntu:~/hello# go run hello.go
+Hello, World!
