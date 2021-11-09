@@ -1,0 +1,40 @@
+### Call code in an external package ###
+#####################################
+root@ubuntu:~/hello# vi hello1.go
+root@ubuntu:~/hello# cat hello1.go
+package main
+
+import "fmt"
+
+import "rsc.io/quote"
+
+func main() {
+    fmt.Println(quote.Go())
+}
+
+###############################
+root@ubuntu:~/hello# cat go.mod
+module example/hello
+
+go 1.17
+
+require rsc.io/quote v1.5.2
+
+require (
+        golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c // indirect
+        rsc.io/sampler v1.3.0 // indirect
+)
+
+
+
+################################
+root@ubuntu:~/hello# go mod tidy
+go: finding module for package rsc.io/quote
+go: downloading rsc.io/quote v1.5.2
+go: found rsc.io/quote in rsc.io/quote v1.5.2
+go: downloading rsc.io/sampler v1.3.0
+go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+
+#####################################
+root@ubuntu:~/hello# go run hello1.go
+Don't communicate by sharing memory, share memory by communicating.
