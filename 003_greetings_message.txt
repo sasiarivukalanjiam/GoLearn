@@ -1,0 +1,60 @@
+
+##############################
+root@ubuntu:~# mkdir greetings
+root@ubuntu:~# cd greetings
+
+##########################################################
+root@ubuntu:~/greetings# go mod init example.com/greetings
+go: creating new go.mod: module example.com/greetings
+
+########################################
+root@ubuntu:~/greetings# vi greetings.go
+root@ubuntu:~/greetings# cat greetings.go
+package greetings
+
+import "fmt"
+
+// Hello returns a greeting for the named person.
+func Hello(name string) string {
+    // Return a greeting that embeds the name in a message.
+    message := fmt.Sprintf("Hi, %v. Welcome!", name)
+    return message
+}
+
+##############################
+root@ubuntu:~/greetings# cd ..
+root@ubuntu:~# ls
+go  greetings  hello
+root@ubuntu:~# cd hello/
+
+##################################
+root@ubuntu:~/hello# vi hello2.go
+root@ubuntu:~/hello# cat hello2.go
+package main
+
+import (
+    "fmt"
+
+    "example.com/greetings"
+)
+
+func main() {
+    // Get a greeting message and print it.
+    message := greetings.Hello("Gladys")
+    fmt.Println(message)
+}
+
+
+################################
+root@ubuntu:~/hello# go mod tidy
+go: finding module for package example.com/greetings
+example/hello imports
+        example.com/greetings: cannot find module providing package example.com/greetings: unrecognized import path "example.com/greetings": reading https://example.com/greetings?go-get=1: 404 Not Found
+root@ubuntu:~/hello# go mod edit -replace example.com/greetings=../greetings
+root@ubuntu:~/hello# go mod tidy
+go: found example.com/greetings in example.com/greetings v0.0.0-00010101000000-000000000000
+
+#####################################
+root@ubuntu:~/hello# go run hello2.go
+Hi, Gladys. Welcome!
+
