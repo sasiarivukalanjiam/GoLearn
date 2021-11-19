@@ -1,0 +1,108 @@
+// main.go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+
+	"github.com/gorilla/mux"
+)
+
+// Qform - Our struct for all Qforms
+type Qform struct {
+	Id       string `json:"Id"`
+	Question string `json:"Question"`
+	AID      string `json:"AID"`
+	Answer   string `json:"Answer"`
+}
+
+var Qforms []Qform
+
+/* test api */
+func homePage(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Welcome to the Qform")
+	fmt.Println("API Hit Successful")
+}
+
+/* Get all Questions 
+curl --location --request GET 'http://localhost:10000/Qforms'
+*/
+func returnAllQforms(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(": returnAllQforms")
+	json.NewEncoder(w).Encode(Qforms)
+}
+
+
+/* get a single question provided the question id 
+curl --location --request GET 'http://localhost:10000/Qform/1'
+ */
+func returnSingleQform(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	key := vars["id"]
+
+	for _, Qform := range Qforms {
+		if Qform.Id == key {
+			json.NewEncoder(w).Encode(Qform)
+		}
+	}
+}
+
+/* create a new question 
+curl --location --request POST 'http://localhost:10000/Qform' \
+--header 'Content-Type: text/plain' \
+--data-raw '{
+    "Id": "3", 
+    "Question": "some other programming languages", 
+    "AID": "03", 
+    "Answer": "python" 
+}'
+*/
+func createNewQform(w http.ResponseWriter, r *http.Request) {
+	// get the body of our POST request
+	// unmarshal this into a new Qform struct
+	// append this to our Qforms array.
+	reqBody, _ := ioutil.ReadAll(r.Body)
+	var Qform Qform
+	json.Unmarshal(reqBody, &Qform)
+	// update our global Qforms array to include
+	// our new Qform
+	Qforms = append(Qforms, Qform)
+
+	json.NewEncoder(w).Encode(Qform)
+}
+
+/* Delete a question providing the question id 
+curl --location --request DELETE 'http://localhost:10000/Qform/1'
+*/
+func deleteQform(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	for index, Qform := range Qforms {
+		if Qform.Id == id {
+			Qforms = append(Qforms[:index], Qforms[index+1:]...)
+		}
+	}
+
+}
+
+func handleRequests() {
+	myRouter := mux.NewRouter().StrictSlash(true)
+	myRouter.HandleFunc("/", homePage)
+	myRouter.HandleFunc("/Qforms", returnAllQforms)
+	myRouter.HandleFunc("/Qform", createNewQform).Methods("POST")
+	myRouter.HandleFunc("/Qform/{id}", deleteQform).Methods("DELETE")
+	myRouter.HandleFunc("/Qform/{id}", returnSingleQform)
+	log.Fatal(http.ListenAndServe(":10000", myRouter))
+}
+
+func main() {
+	Qforms = []Qform{
+		Qform{Id: "1", Question: "What is the best IDE for Golang development ", AID: "01", Answer: "VS Code"},
+		Qform{Id: "2", Question: "What data types does Golang use (any one) ", AID: "02", Answer: "String"},
+	}
+	handleRequests()
+}
