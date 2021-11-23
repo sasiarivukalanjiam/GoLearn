@@ -1,0 +1,4 @@
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\hello-world-go> go run .\main.go
+main.go:1:1: expected 'package', found 'EOF'
+https://stackoverflow.com/questions/31110191/go-failing-expected-package-found-eof
+
