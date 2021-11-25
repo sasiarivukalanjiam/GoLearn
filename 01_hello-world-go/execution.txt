@@ -1,0 +1,222 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\02_variables> cd ..
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn> cd .\01_hello-world-go\
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go mod init myapp      
+go: to add module requirements and sums:
+        go mod tidy
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+hello world
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+.\main.go:34:6: missing function body
+.\main.go:35:1: syntax error: unexpected semicolon or newline before {
+.\main.go:37:2: syntax error: non-declaration statement outside function body
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+
+I'm Eliza
+---------
+and lower-case letters and punctuation.  Enter 'quit' when done.
+
+Hello. How are you feeling today?
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+
+I'm Eliza
+---------
+Talk to the program by typing in plain English, using normal upper
+and lower-case letters and punctuation.  Enter 'quit' when done.
+
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+
+I'm Eliza
+---------
+Talk to the program by typing in plain English, using normal upper
+and lower-case letters and punctuation.  Enter 'quit' when done.
+
+Hello. How are you feeling today?
+vanakkam
+vanakkam
+
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+
+I'm Eliza
+---------
+and lower-case letters and punctuation.  Enter 'quit' when done.
+
+Hello. How are you feeling today?
+\great
+\great
+
+vanakkam
+vanakkam
+
+
+exit status 0xc000013a
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+
+I'm Eliza
+---------
+Talk to the program by typing in plain English, using normal upper
+and lower-case letters and punctuation.  Enter 'quit' when done.
+
+Hello. How are you feeling today?
+great
+Very interesting.
+yes
+You seem quite sure.
+ofcourse
+Why do you say that ?
+because its
+Does that reason apply to anything else?
+no
+I see.
+yes
+You seem quite sure.
+yes
+You seem quite sure.
+yes
+OK, but can you elaborate a bit?
+nothing much
+Hi... I'm glad you could drop by today.
+quit
+Thank you, that will be $150.  Have a good day!
+
+?
+haha
+I see.  And what does that tell you?
+I see.
+
+How does that make you feel?
+Thank you, that will be $150.  Have a good day!
+quit
+Thank you for talking with me.
+quit
+Thank you, that will be $150.  Have a good day!
+How does that make you feel?
+exit status 0xc000013a
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+# command-line-arguments
+.\main.go:76:3: syntax error: unexpected else, expecting }
+.\main.go:81:2: syntax error: non-declaration statement outside function body
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+
+I'm Eliza
+---------
+Talk to the program by typing in plain English, using normal upper
+and lower-case letters and punctuation.  Enter 'quit' when done.
+
+Hello. How are you feeling today?
+-> 
+123
+Why do you say that ?
+->
+456
+Let's change focus a bit... Tell me about your family.
+->
+789
+Can you elaborate on that?
+->
+Thank you for talking with me.
+->
+quit
+Thank you, that will be $150.  Have a good day!
+->
+quit
+Good-bye.
+->
+Let's change focus a bit... Tell me about your family.
+->
+exit status 0xc000013a
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+
+I'm Eliza
+Talk to the program by typing in plain English, using normal upper
+and lower-case letters and punctuation.  Enter 'quit' when done.
+
+Hello. How are you feeling today?
+->
+quit
+Thank you for talking with me.
+->
+Very interesting.
+->
+exit status 0xc000013a
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+
+I'm Eliza
+---------
+Talk to the program by typing in plain English, using normal upper
+and lower-case letters and punctuation.  Enter 'quit' when done.
+Hello. How are you feeling today?
+->
+quit
+Thank you, that will be $150.  Have a good day!
+->
+exit
+?
+->
+I see.
+exit status 0xc000013a
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go run .\main.go
+
+I'm Eliza
+---------
+Talk to the program by typing in plain English, using normal upper
+and lower-case letters and punctuation.  Enter 'quit' when done.
+
+Hello. How are you feeling today?
+->
+quit
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> ls
+    Directory: C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        23-11-2021     08:28                doctor
+-a----        23-11-2021     08:27             22 go.mod
+-a----        23-11-2021     08:53           1165 main.go
+
+
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go build -o eliza main.go
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> ls
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        23-11-2021     08:28                doctor
+-a----        23-11-2021     09:33        2367488 eliza
+-a----        23-11-2021     08:27             22 go.mod
+-a----        23-11-2021     08:53           1165 main.go
+
+
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> .\eliza 
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> go build -o eliza.exe  main.go
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> .\eliza.exe
+
+I'm Eliza
+---------
+Talk to the program by typing in plain English, using normal upper
+and lower-case letters and punctuation.  Enter 'quit' when done.
+
+Hello. How are you feeling today?
+-> fine
+I see.  And what does that tell you?
+-> super
+Can you elaborate on that?
+-> cool
+Please tell me more.
+-> bore
+I see.
+-> fine
+I see.  And what does that tell you?
+-> sendi
+Very interesting.
+-> goti
+I see.
+-> luck
+Why do you say that ?
+-> quit
+PS C:\Users\prems\Documents\Learning\language\go\GoLearn\01_hello-world-go> 
